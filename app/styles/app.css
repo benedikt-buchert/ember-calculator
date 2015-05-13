@@ -17,6 +17,10 @@ html body {
 	color: white;
 }
 
+.is-zero {
+	width: 50vw;
+}
+
 .result{
 	background-color: grey;
 	outline: 1px solid black;
@@ -31,7 +35,7 @@ html body {
 }
 
 #btn0 {
-	width: 50vw;
+	min-width: 50vw;
 }
 
 .butn{

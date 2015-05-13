@@ -21,7 +21,10 @@ export default Ember.Component.extend({
 
   classNames: ['butn'],
 
-  classNameBindings: ['isOrange'],
+  classNameBindings: ['isOrange','isZero'],
+
+  isZero: function() {
+  }.property("isZero"),
 
   isOrange: function() {
   }.property("isOrange"),
