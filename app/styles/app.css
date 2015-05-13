@@ -42,7 +42,7 @@ html body {
 	min-width: 25vw;
 	background-color:#DCDCDC;
 	display: inline-block;
-	margin-right: -5px;
+	float: left;
 
 }
 
