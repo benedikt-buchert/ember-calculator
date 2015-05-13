@@ -75,8 +75,7 @@ export default Ember.Component.extend({
       break;
       default: key = ""
     }
-    var value = key;
-    this.sendAction("action", value);
+    this.sendAction("action", key);
     
     //console.log("value");
   }
