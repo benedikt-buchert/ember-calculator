@@ -1,0 +1,53 @@
+html body {
+	background-color: #DCDCDC;
+	font-size: 2em;
+	overflow: hidden;
+}
+
+.container-fluid {
+	padding: 0px;
+}
+
+.row{
+	margin: 0px;
+}
+
+.is-orange {
+	background-color: orange !important;
+	color: white;
+}
+
+.result{
+	background-color: grey;
+	outline: 1px solid black;
+	text-align: right;
+	line-height: 16.667vh;
+	padding-right: 2em;
+}
+
+
+.button:active{
+	background-color: grey;
+}
+
+#btn0 {
+	width: 50vw;
+}
+
+.butn{
+	min-width: 25vw;
+	background-color:#DCDCDC;
+	display: inline-block;
+	margin-right: -5px;
+
+}
+
+
+.button {
+	background: transparent;
+	border: 0px;
+	outline: 1px solid grey;
+	width:25vw;
+	line-height: 16.667vh;
+	padding: 0px;
+}
