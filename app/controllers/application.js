@@ -7,19 +7,17 @@ export default Ember.Controller.extend({
 	total: 0,
 
   formatNumber: function(value) {
-    if (typeof value === "string") {
-    	value = value ? parseFloat(value) : 0;
-    }
+	value = value ? parseFloat(value) : 0;
     value = parseFloat(value.toFixed(10));
     return value.toString();
   },
 
   frmtCurrentValue: function() {
-    return this.formatNumber( this.get("currentValue") );
+    return this.formatNumber( this.currentValue );
   }.property("currentValue"),
 
   frmtTotal: function() {
-    return this.formatNumber( this.get("total") );
+    return this.formatNumber(this.total);
   }.property("total"),
 
   actions: {
@@ -45,21 +43,20 @@ export default Ember.Controller.extend({
 	    	var currentOperator = this.currentOperator;
 	    	var currentValue = this.currentValue;
 	    	var total = this.total;
-
-	    	switch(currentOperator) {
-	            case "+":
-	              total += currentValue;
-	              break;
-	            case "-":
-	              total -= currentValue;
-	              break;
-	            case "/":
-	            	total /= currentValue;
-	            	break;
-	            case "*":
-	            	total *= currentValue;
-	            	break;
-	        }
+		    	switch(currentOperator) {
+		            case "+":
+		              total += currentValue;
+		              break;
+		            case "-":
+		              total -= currentValue;
+		              break;
+		            case "/":
+		            	total /= currentValue;
+		            	break;
+		            case "*":
+		            	total *= currentValue;
+		            	break;
+	    	}
 
 	        this.set("currentValue", total);
 	        this.set("total", total);
@@ -67,24 +64,26 @@ export default Ember.Controller.extend({
 
 	    },
 
-	    percent: function() {
-	    	var total = this.get("total");
-	    	var currentValue = this.get("currentValue");
-	    	total = currentValue/100;
-	    	this.set("currentValue", total);
-		    this.set("total", total);
-	    },
+	    imdiateCalc: function(operator) {
+	    	var currentValue = this.currentValue;
+    		var total = this.total;
+    		if (currentValue) {
+    			switch(operator) {
+	            case "+/-":
+	              total = currentValue*-1;
+	              break;
+	            case "%":
+	              total = currentValue/100;
+	              break;
+	        }
+    		};
+    		
+	        this.set("currentValue", total);
 
-	    plusMinus: function() {
-	    	var total = this.get("total");
-	    	var currentValue = this.get("currentValue");
-	    	total = currentValue*-1;
-	    	this.set("currentValue", total);
-		    this.set("total", total);
 	    },
 
 	    useValue: function(value) {
-	      var cv = this.get("currentValue");
+	      var cv = this.currentValue;
 	      this.set("currentValue", cv + value);
 	    }
 	}
