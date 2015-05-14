@@ -23,24 +23,29 @@ export default Ember.Controller.extend({
   }.property("total"),
 
   actions: {
-    clear: function() {
-      this.set("currentOperator", null);
-      this.set("currentValue", "");
-      this.set("total", 0);
-      
-	},
+	    clear: function() {
+	      this.set("currentOperator", null);
+	      this.set("currentValue", "");
+	      this.set("total", 0);
+	      
+		},
 
-    setOperator: function(operator) {
-      var currentValue = this.get("currentValue");
-      
-    	if ( currentValue ) {
+	    setOperator: function(operator) {
+	    	this.set("currentOperator", operator);
+	    	var currentValue = this.currentValue;
+    		var total = this.total;
+    		total = currentValue;
+    		this.set("currentValue", "");
+    		this.set("total", total);    	
+	    },
 
-	        currentValue = parseFloat( currentValue );
-	        var currentOperator = this.get("currentOperator");
-	        var total = this.get("total");
+	    equal: function(){
+	    	var currentOperator = this.currentOperator;
+	    	var currentValue = this.currentValue;
+	    	currentValue = parseFloat( currentValue );
+	    	var total = this.total;
 
-	        if ( currentOperator ) {
-	          switch(currentOperator) {
+	    	switch(currentOperator) {
 	            case "+":
 	              total += currentValue;
 	              break;
@@ -53,43 +58,33 @@ export default Ember.Controller.extend({
 	            case "*":
 	            	total *= currentValue;
 	            	break;
-	            }
-	        }
-	        else {
-	          total = currentValue;
 	        }
 
-	        this.set("currentValue", "");
+	        this.set("currentValue", total);
 	        this.set("total", total);
-    	}
+	        this.set("currentOperator", null);
 
-		if ( operator === "=" ) {
-        	this.set("currentOperator", null);
-		} else {
-        	this.set("currentOperator", operator);
-		}
+	    },
 
-    },
+	    percent: function() {
+	    	var total = this.get("total");
+	    	var currentValue = this.get("currentValue");
+	    	total = currentValue/100;
+	    	this.set("currentValue", total);
+		    this.set("total", total);
+	    },
 
-    percent: function() {
-    	var total = this.get("total");
-    	var currentValue = this.get("currentValue");
-    	total = currentValue/100;
-    	this.set("currentValue", total);
-	    this.set("total", total);
-    },
+	    plusMinus: function() {
+	    	var total = this.get("total");
+	    	var currentValue = this.get("currentValue");
+	    	total = currentValue*-1;
+	    	this.set("currentValue", total);
+		    this.set("total", total);
+	    },
 
-    plusMinus: function() {
-    	var total = this.get("total");
-    	var currentValue = this.get("currentValue");
-    	total = currentValue*-1;
-    	this.set("currentValue", total);
-	    this.set("total", total);
-    },
-
-    useValue: function(value) {
-      var cv = this.get("currentValue");
-      this.set("currentValue", cv + value);
-    }
-  }
+	    useValue: function(value) {
+	      var cv = this.get("currentValue");
+	      this.set("currentValue", cv + value);
+	    }
+	}
 });
