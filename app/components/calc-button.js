@@ -36,6 +36,8 @@ export default Ember.Component.extend({
     this.sendAction("action", value);
   },
 
+//Keyboard Shortcuts
+
   keyDown: function(event) {
     var key = event.keyCode;
     switch(key) {
@@ -77,6 +79,5 @@ export default Ember.Component.extend({
     }
     this.sendAction("action", key);
     
-    //console.log("value");
   }
 });
