@@ -44,7 +44,6 @@ export default Ember.Controller.extend({
 	    equal: function(){
 	    	var currentOperator = this.currentOperator;
 	    	var currentValue = this.currentValue;
-	    	currentValue = parseFloat( currentValue );
 	    	var total = this.total;
 
 	    	switch(currentOperator) {
