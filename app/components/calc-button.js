@@ -73,7 +73,7 @@ export default Ember.Component.extend({
       case 188:
       case 190: key = ".";
       break;
-      default: key = ""
+      default: key = "";
     }
     this.sendAction("action", key);
     
