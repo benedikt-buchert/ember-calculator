@@ -59,7 +59,7 @@ export default Ember.Controller.extend({
 	          total = currentValue;
 	        }
 
-	        this.set("currentValue", total);
+	        this.set("currentValue", "");
 	        this.set("total", total);
     	}
 
