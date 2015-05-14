@@ -9,6 +9,7 @@ html body {
 
 .row{
 	margin: 0px;
+	height: 16.667vh;
 }
 
 .is-orange {
