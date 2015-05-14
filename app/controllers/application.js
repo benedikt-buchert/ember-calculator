@@ -34,7 +34,7 @@ export default Ember.Controller.extend({
     		var total = this.total;
     		if (currentValue) {
     			total = currentValue;
-    		};
+    		}
     		this.set("currentValue", "");
     		this.set("total", total);    	
 	    },
@@ -56,6 +56,8 @@ export default Ember.Controller.extend({
 		            case "*":
 		            	total *= currentValue;
 		            	break;
+		            default:
+		            	total = currentValue;
 	    	}
 
 	        this.set("currentValue", total);
@@ -69,14 +71,14 @@ export default Ember.Controller.extend({
     		var total = this.total;
     		if (currentValue) {
     			switch(operator) {
-	            case "+/-":
-	              total = currentValue*-1;
-	              break;
-	            case "%":
-	              total = currentValue/100;
-	              break;
-	        }
-    		};
+		            case "+/-":
+		              total = currentValue*-1;
+		              break;
+		            case "%":
+		              total = currentValue/100;
+		              break;
+	        	}
+    		} 
     		
 	        this.set("currentValue", total);
 
