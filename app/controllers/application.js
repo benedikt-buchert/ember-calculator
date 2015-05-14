@@ -53,21 +53,13 @@ export default Ember.Controller.extend({
 	            case "*":
 	            	total *= currentValue;
 	            	break;
-	            case "+/-":
-	            	total = total*-1;
-	            	//???this.set("currentValue", "");
-	            	break;
-	            case "%":
-	            	total = total/100;
-	            	//???this.set("currentValue", "");
-	            	break;
 	            }
 	        }
 	        else {
 	          total = currentValue;
 	        }
 
-	        this.set("currentValue", "");
+	        this.set("currentValue", total);
 	        this.set("total", total);
     	}
 
@@ -77,6 +69,22 @@ export default Ember.Controller.extend({
         	this.set("currentOperator", operator);
 		}
 
+    },
+
+    percent: function() {
+    	var total = this.get("total");
+    	var currentValue = this.get("currentValue");
+    	total = currentValue/100;
+    	this.set("currentValue", total);
+	    this.set("total", total);
+    },
+
+    plusMinus: function() {
+    	var total = this.get("total");
+    	var currentValue = this.get("currentValue");
+    	total = currentValue*-1;
+    	this.set("currentValue", total);
+	    this.set("total", total);
     },
 
     useValue: function(value) {
