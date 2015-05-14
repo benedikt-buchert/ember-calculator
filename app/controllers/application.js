@@ -34,7 +34,9 @@ export default Ember.Controller.extend({
 	    	this.set("currentOperator", operator);
 	    	var currentValue = this.currentValue;
     		var total = this.total;
-    		total = currentValue;
+    		if (currentValue) {
+    			total = currentValue;
+    		};
     		this.set("currentValue", "");
     		this.set("total", total);    	
 	    },
