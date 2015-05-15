@@ -7,9 +7,9 @@
   		{{/if}}
 	</div>
 	<div class="row">
-		{{calc-button value="C" action="clear"}}
-		{{calc-button value="+/-" action="imdiateCalc"}}
-		{{calc-button value="%" action="imdiateCalc"}}
+		{{calc-button value="C" action="clearDisplay"}}
+		{{calc-button value="+/-" action="imdiateSolution"}}
+		{{calc-button value="%" action="imdiateSolution"}}
 		{{calc-button isOrange=true value="/" action="setOperator"}} 
 	</div>
 	<div class="row">
@@ -33,6 +33,6 @@
 	<div class="row">
 		{{calc-button isZero=true value="0"}}
 		{{calc-button value="."}}
-		{{calc-button isOrange=true value="=" action="equal"}}
+		{{calc-button isOrange=true value="=" action="calculateSolution"}}
 	</div>
 </div>

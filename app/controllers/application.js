@@ -6,11 +6,18 @@ export default Ember.Controller.extend({
 	currentValue: "",
 	total: 0,
 
-  formatNumber: function(value) {
-	value = value ? parseFloat(value) : 0;
-    value = parseFloat(value.toFixed(10));
-    return value.toString();
-  },
+	formatNumber: function(value) {
+
+		if (isFinite(value) == false) {
+			this.set ("currentValue", "");
+			this.set("currentOperator", null);
+	  		return "Error"
+	  	} else {
+			value = value ? parseFloat(value) : 0;
+	  		value = parseFloat(value.toFixed(20));
+	  		return value.toString()
+	  	}
+	},
 
   frmtCurrentValue: function() {
     return this.formatNumber( this.currentValue );
@@ -21,7 +28,7 @@ export default Ember.Controller.extend({
   }.property("total"),
 
   actions: {
-	    clear: function() {
+	    clearDisplay: function() {
 	      this.set("currentOperator", null);
 	      this.set("currentValue", "");
 	      this.set("total", 0);
@@ -39,7 +46,7 @@ export default Ember.Controller.extend({
     		this.set("total", total);    	
 	    },
 
-	    equal: function(){
+	    calculateSolution: function(){
 	    	var currentOperator = this.currentOperator;
 	    	var currentValue = this.currentValue;
 	    	var total = this.total;
@@ -51,7 +58,13 @@ export default Ember.Controller.extend({
 		              total -= currentValue;
 		              break;
 		            case "/":
-		            	total /= currentValue;
+		            	if (currentValue == 0) {
+		            		console.log("DirtyStuff")
+		            		total=Infinity
+		           		} else {
+		            		total /= currentValue
+		            }
+		            	
 		            	break;
 		            case "*":
 		            	total *= currentValue;
@@ -66,7 +79,7 @@ export default Ember.Controller.extend({
 
 	    },
 
-	    imdiateCalc: function(operator) {
+	    imdiateSolution: function(operator) {
 	    	var currentValue = this.currentValue;
     		var total = this.total;
     		if (currentValue) {

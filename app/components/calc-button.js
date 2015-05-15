@@ -4,7 +4,7 @@ export default Ember.Component.extend({
 	action: 'useValue',
 
   buttonID: function() {
-    var id = this.get("value");
+    var id = this.value;
     switch(id) {
       case "+": id = "Plus"; break;
       case "-": id = "Minus"; break;
@@ -32,7 +32,7 @@ export default Ember.Component.extend({
   value: null,
 
   click: function() {
-    var value = this.get("value");
+    var value = this.value;
     this.sendAction("action", value);
   },
 
