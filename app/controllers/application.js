@@ -8,14 +8,14 @@ export default Ember.Controller.extend({
 
 	formatNumber: function(value) {
 
-		if (isFinite(value) == false) {
+		if (isFinite(value) === false) {
 			this.set ("currentValue", "");
 			this.set("currentOperator", null);
-			return "Error"
+			return "Error";
 		} else {
 			value = value ? parseFloat(value) : 0;
 			value = parseFloat(value.toFixed(20));
-			return value.toString()
+			return value.toString();
 		}
 	},
 
@@ -58,11 +58,11 @@ export default Ember.Controller.extend({
 				total -= currentValue;
 				break;
 				case "/":
-				if (currentValue == 0) {
-					console.log("DirtyStuff")
-					total=Infinity
+				if (currentValue === 0) {
+					console.log("DirtyStuff");
+					total=Infinity;
 				} else {
-					total /= currentValue
+					total /= currentValue;
 				}
 				
 				break;

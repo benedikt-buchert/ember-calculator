@@ -22,6 +22,7 @@ app.import('bower_components/bootstrap/dist/css/bootstrap.css');
 app.import('bower_components/bootstrap/dist/css/bootstrap.css.map', { destDir: 'assets' });
 app.import('bower_components/bootstrap/dist/js/bootstrap.js');
 
+
 var mergeTrees = require('broccoli-merge-trees');
 var pickFiles = require('broccoli-static-compiler');
 var extraAssets = pickFiles('bower_components/bootstrap/dist/fonts',{
@@ -30,4 +31,4 @@ var extraAssets = pickFiles('bower_components/bootstrap/dist/fonts',{
     destDir: '/fonts'
 });
 
-module.exports = mergeTrees([app.toTree(), extraAssets]);
+module.exports = app.toTree();
