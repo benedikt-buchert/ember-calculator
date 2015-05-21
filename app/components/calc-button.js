@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Component.extend({
-	action: 'useValue',
+  action: 'useValue',
 
   buttonID: function() {
     var id = this.value;
