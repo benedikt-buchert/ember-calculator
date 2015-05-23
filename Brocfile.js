@@ -31,4 +31,4 @@ var extraAssets = pickFiles('bower_components/bootstrap/dist/fonts',{
     destDir: '/fonts'
 });
 
-module.exports = app.toTree();
+module.exports = mergeTrees([app.toTree(), extraAssets]);
