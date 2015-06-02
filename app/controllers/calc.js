@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
 	currentValue: "",
 	total: 0,
 
-	formatNumber: function(value) {
+	formatNumber(value) {
 
 		if (isFinite(value) === false) {
 			this.set ("currentValue", "");
@@ -28,14 +28,14 @@ export default Ember.Controller.extend({
 	}.property("total"),
 
 	actions: {
-		clearDisplay: function() {
+		clearDisplay() {
 			this.set("currentOperator", null);
 			this.set("currentValue", "");
 			this.set("total", 0);
 			
 		},
 
-		setOperator: function(operator) {
+		setOperator(operator) {
 			this.set("currentOperator", operator);
 			var currentValue = this.currentValue;
 			var total = this.total;
@@ -46,7 +46,7 @@ export default Ember.Controller.extend({
 			this.set("total", total);    	
 		},
 
-		calculateSolution: function(){
+		calculateSolution(){
 			var currentOperator = this.currentOperator;
 			var currentValue = this.currentValue;
 			var total = this.total;
@@ -79,7 +79,7 @@ export default Ember.Controller.extend({
 
 		},
 
-		imdiateSolution: function(operator) {
+		imdiateSolution(operator) {
 			var currentValue = this.currentValue;
 			var total = this.total;
 			if (currentValue) {
@@ -97,7 +97,7 @@ export default Ember.Controller.extend({
 
 		},
 
-		useValue: function(value) {
+		useValue(value) {
 			var cv = this.currentValue;
 			this.set("currentValue", cv + value);
 		}

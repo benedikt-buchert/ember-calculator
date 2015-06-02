@@ -31,14 +31,14 @@ export default Ember.Component.extend({
 
   value: null,
 
-  click: function() {
+  click() {
     var value = this.value;
     this.sendAction("action", value);
   },
 
   //Keyboard Shortcuts
 
-  keyDown: function(event) {
+  keyDown(event) {
     var key = event.keyCode;
     switch(key) {
       case 48:
